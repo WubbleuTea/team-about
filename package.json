@@ -1,0 +1,27 @@
+{
+  "name": "team-about",
+  "version": "1.0.0",
+  "description": "Creates team page with their information.",
+  "main": "Index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "inquirer": "^7.3.2",
+    "jest": "^26.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuaweisbrodtorres/team-about.git"
+  },
+  "author": "Joshua Weisbrod-Torres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshuaweisbrodtorres/team-about/issues"
+  },
+  "homepage": "https://github.com/joshuaweisbrodtorres/team-about#readme"
+}
