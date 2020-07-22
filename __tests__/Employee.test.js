@@ -5,5 +5,5 @@ test('creates and asks employee questions', () => {
 
     expect(employee.name).toBe('Jake');
     expect(employee.id).toEqual(expect.any(String))
-    expect(employee.email).toEqual(expect.any(String))
+    expect(employee.email).toEqual(expect.stringContaining('@'))
 })
