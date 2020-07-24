@@ -1,12 +1,16 @@
 const Manager = require('../lib/Manager');
 
 test('creating manager object and updating role', () => {
-    const manager = new Manager('Manager', '020202', 'Manager@gmail.com', '2549632542');
+    let managerOffice = 100
+    const manager = new Manager('Manager', 20202, 'Manager@gmail.com', 100);
+    
+    expect(manager.officeNumber).toBe(managerOffice);
+})
 
-    expect(manager.name).toBe('Manager');
-    expect(manager.id).toEqual(expect.any(String))
-    expect(manager.email).toEqual(expect.stringContaining('@'))
-    expect(manager.officeNumber).toEqual(expect.any(String));
-    expect(manager.getRole()).toEqual(expect.stringMatching('Manager'))
+test('creating manager object and updating role', () => {
+    let managerName = 'Manager'
+    const manager = new Manager('Manager', '020202', 'Manager@gmail.com', '100');
+   
+    expect(manager.getRole()).toBe(managerName)
 })
 // .toHaveLength(10)

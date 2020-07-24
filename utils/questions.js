@@ -1,5 +1,3 @@
-const inquirer = require('inquirer');
-
 const managerQuestions = [
     {
         type: 'input',
@@ -52,6 +50,12 @@ const managerQuestions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'list',
+        name: 'anotherMember',
+        message: 'Please select a team member to add: ',
+        choices: ['Engineer', 'Intern', 'I would not like to add any more team members']
     }
 ]
 
@@ -107,6 +111,12 @@ const engineerQuestions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'list',
+        name: 'anotherMember',
+        message: 'Please select a team member to add: ',
+        choices: ['Engineer', 'Intern', 'I would not like to add any more team members']
     }
 ]
 
@@ -162,5 +172,13 @@ const internQuestions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'list',
+        name: 'anotherMember',
+        message: 'Please select a team member to add: ',
+        choices: ['Engineer', 'Intern', 'I would not like to add any more team members']
     }
 ]
+
+module.exports = { managerQuestions, internQuestions, engineerQuestions }
