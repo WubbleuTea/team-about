@@ -54,10 +54,10 @@ const managerQuestions = [
     {
         type: 'list',
         name: 'anotherMember',
-        message: 'Please select a team member to add: ',
-        choices: ['Engineer', 'Intern', 'I would not like to add any more team members']
+        message: 'Please choose either another member to add or to finish adding members',
+        choices: ['Engineer', 'Intern', 'Generate Page']
     }
-]
+];
 
 const engineerQuestions = [
     {
@@ -115,10 +115,10 @@ const engineerQuestions = [
     {
         type: 'list',
         name: 'anotherMember',
-        message: 'Please select a team member to add: ',
-        choices: ['Engineer', 'Intern', 'I would not like to add any more team members']
+        message: 'Please choose either another member to add or to finish adding members',
+        choices: ['Engineer', 'Intern', 'Generate Page']
     }
-]
+];
 
 const internQuestions = [
     {
@@ -176,9 +176,9 @@ const internQuestions = [
     {
         type: 'list',
         name: 'anotherMember',
-        message: 'Please select a team member to add: ',
-        choices: ['Engineer', 'Intern', 'I would not like to add any more team members']
+        message: 'Please choose either another member to add or to finish adding members',
+        choices: ['Engineer', 'Intern', 'Generate Page']
     }
-]
+];
 
 module.exports = { managerQuestions, internQuestions, engineerQuestions }
