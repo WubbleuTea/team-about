@@ -78,4 +78,4 @@ const generateOrNot = (anotherMember) => {
 
 managerInfo();
 
-module.exports = { managerArr, internArr, engineerArr }
+module.exports = { employeeArr }
