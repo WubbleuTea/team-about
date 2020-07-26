@@ -23,7 +23,7 @@ Creates a quality team webpage (this is a static image).
 ![Creates a quality team webpage.](/assets/images/completed-page.PNG)  
 
 Video Demo Youtube (if viewing online, the image is a link)   
-[![Video Demo: Youtube](https://img.youtube.com/vi/LjcwEa7bCyg/maxresdefault.jpg)](https://www.youtube.com/watch?v=LjcwEa7bCyg&feature=youtu.be)  
+[![Video Demo: Youtube](/assets/images/youtube.png)](https://www.youtube.com/watch?v=LjcwEa7bCyg&feature=youtu.be)  
 
 Video Demo File (if viewing from desktop with cloned repo, the image is a link)   
 [![Video Demo: File](/assets/images/image-video-demo-file.png)](/assets/video/demo.mp4)  
@@ -38,12 +38,12 @@ To contribute to this project please follow the guidlines listed below:
 If you would like to contribute please e-mail me.
 
 ## Tests
-```npm test```
-```npm test Employee```
-```npm test Engineer```
-```npm test Intern```
-```npm test Manager```
-```node index```
+- ```npm test```
+- ```npm test Employee```
+- ```npm test Engineer```
+- ```npm test Intern```
+- ```npm test Manager```
+- ```node index```
 
 ## Technologies 
 - JavaScript
