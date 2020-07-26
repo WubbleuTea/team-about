@@ -47,8 +47,8 @@ const internInfo = () => {
     inquirer
         .prompt(internQuestions)
         .then(answers => {
-            const { name, id, email, github, anotherMember } = answers
-            const intern = new Intern(name, id, email, github)
+            const { name, id, email, school, anotherMember } = answers
+            const intern = new Intern(name, id, email, school)
             const internObj = {
                 name: intern.getName(),
                 role: intern.getRole(),
@@ -96,7 +96,7 @@ const writeHTML = () => {
     <nav class="navbar sticky-top navbar-light justify-content-center" style="background-color: #e3f2fd;">
         <h1 class="navbar-text">Our Team</h1>
     </nav>
-    <div class="container d-flex flex-row p-4">
+    <div class="container d-flex flex-wrap p-4">
         ${writeCards()}
     </div>
 
@@ -116,7 +116,7 @@ const writeCards = () =>{
     employeeArr.map(employee => {
         const { name, role, id, extraInfo, email } = employee
         html +=
-         `<div class="card" style="width: 18rem;">
+         `<div class="card m-4 shadow-lg" style="width: 18rem;">
             <div class="card-header bg-success">
                 ${name}
                 ${role}
