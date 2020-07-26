@@ -6,7 +6,7 @@ test('creating manager object and updating role', () => {
     expect(manager.officeNumber).toBe('100');
 })
 
-test('creating manager object and updating role', () => {
+test('returns HTML Manager information', () => {
     const manager = new Manager('Manager', '020202', 'Manager@gmail.com', '100');
     expect(manager.getOfficeNumber()).toEqual(expect.stringContaining('100'))
     expect(manager.getRole()).toEqual(expect.stringContaining('Manager'))

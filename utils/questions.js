@@ -30,10 +30,11 @@ const managerQuestions = [
         name: 'email',
         message: "Enter this manager's e-mail address.",
         validate: emailInput => {
-            if (emailInput) {
+            const val = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (emailInput.match(val)) {
                 return true;
             } else {
-                console.log("Please enter your manager's e-mail!");
+                console.log('\n Please enter a valid email address!');
                 return false;
             }
         }
@@ -91,10 +92,11 @@ const engineerQuestions = [
         name: 'email',
         message: "Enter this engineer's e-mail address.",
         validate: emailInput => {
-            if (emailInput) {
+            const val = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (emailInput.match(val)) {
                 return true;
             } else {
-                console.log("Please enter your engineer's e-mail!");
+                console.log('\n Please enter a valid email address!');
                 return false;
             }
         }
@@ -152,10 +154,11 @@ const internQuestions = [
         name: 'email',
         message: "Enter this intern's e-mail address.",
         validate: emailInput => {
-            if (emailInput) {
+            const val = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (emailInput.match(val)) {
                 return true;
             } else {
-                console.log("Please enter your intern's e-mail!");
+                console.log('\n Please enter a valid email address!\nIf you need to delete what you have already put and try again.');
                 return false;
             }
         }

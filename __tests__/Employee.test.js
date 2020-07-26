@@ -8,7 +8,7 @@ test('Employee name', () => {
     expect(employee.email).toBe('Jake@gmail.com')
 });
 
-test('returns Employee information', () => {
+test('returns HTML Employee information', () => {
     const employee = new Employee('Jake', '10101', 'Jake@gmail.com');
 
     expect(employee.getName()).toEqual(expect.stringContaining('Jake'));

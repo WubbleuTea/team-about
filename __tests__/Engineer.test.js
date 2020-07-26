@@ -11,9 +11,9 @@ test('creating engineer object and updating role', () => {
 })
 
 
-test('creating engineer object and updating role', () => {
+test('returns HTML Engineer information', () => {
     const engineer = new Engineer('Engineer', '40404', 'engineer@gmail.com', 'GitHubUSERNAME');
-    
+
     expect(engineer.getGithub()).toEqual(expect.stringMatching('GitHubUSERNAME'))
     expect(engineer.getRole()).toEqual(expect.stringMatching('Engineer'))
 

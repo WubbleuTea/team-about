@@ -9,7 +9,7 @@ test('creating intern object', () => {
     expect(intern.school).toBe('UT-Austin');
 })
 
-test('creating intern object', () => {
+test('returns HTML Intern information', () => {
     const intern = new Intern('Intern', '40404', 'Intern@gmail.com', 'UT-Austin');
 
     expect(intern.getSchool()).toEqual(expect.stringContaining('UT-Austin'))

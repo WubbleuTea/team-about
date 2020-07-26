@@ -1,18 +1,22 @@
-let employeeArr = [];
+const employeeArr = [];
+const internArr = [];
 const fs = require('fs')
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-// const { generateHTML } = require('./utils/generateHTML')
-const { managerQuestions, internQuestions, engineerQuestions } = require('./utils/questions')
+const { managerQuestions, internQuestions, engineerQuestions } = require('./utils/questions');
+const { Console } = require('console');
 
 const managerInfo = () => {
+    //prompts Manager questions
     inquirer
         .prompt(managerQuestions)
         .then(answers => {
+            //creates manager object
             const { name, id, email, officeNumber, anotherMember } = answers;
             let manager = new Manager(name, id, email, officeNumber);
+            // uses manager object to create an object to hold the HTML needed later
             let managerObj = {
                 role: manager.getRole(),
                 name: manager.getName(),
@@ -20,17 +24,21 @@ const managerInfo = () => {
                 extraInfo: manager.getOfficeNumber(),
                 email: manager.getEmail()
             };
+            //push HTML object to the employee arr and then ask if they want to add another team member
             employeeArr.push(managerObj)
             generateOrNot(anotherMember)
         })
 }
 
 const engineerInfo = () => {
+    //prompts engineer questions
     inquirer
         .prompt(engineerQuestions)
         .then(answers => {
+            //creates engineer object
             const { name, id, email, github, anotherMember } = answers
             const engineer = new Engineer(name, id, email, github)
+            // uses engineer object to create an object to hold the HTML needed later
             const engineerObj = {
                 role: engineer.getRole(),
                 name: engineer.getName(),
@@ -38,17 +46,21 @@ const engineerInfo = () => {
                 extraInfo: engineer.getGithub(),
                 email: engineer.getEmail()
             }
+            //push HTML object to the employee arr and then ask if they want to add another team member
             employeeArr.push(engineerObj)
             generateOrNot(anotherMember)
         })
 }
 
 const internInfo = () => {
+    // prompts intern questions
     inquirer
         .prompt(internQuestions)
         .then(answers => {
+            //creates intern object
             const { name, id, email, school, anotherMember } = answers
             const intern = new Intern(name, id, email, school)
+            // uses intern object to create an object to hold the HTML needed later
             const internObj = {
                 name: intern.getName(),
                 role: intern.getRole(),
@@ -56,35 +68,38 @@ const internInfo = () => {
                 extraInfo: intern.getSchool(),
                 email: intern.getEmail()
             }
-            employeeArr.push(internObj)
+            //push HTML object to the intern arr ewhich will be pushed to the employee array right before the page is generated and then ask if they want to add another team member
+            internArr.push(internObj)
             generateOrNot(anotherMember)
         })
 }
-
+//this takes the answer to the question asked at the end of adding every memeber and decides what to do.
 const generateOrNot = (anotherMember) => {
     if (anotherMember === 'Engineer'){
         engineerInfo();
     } else if (anotherMember === 'Intern') {
         internInfo();
     } else {
-        console.log(employeeArr)
+        //intern arr is then added to employee arr (this is done at the end to keep the Engineers at the top of the page and the interns at the bottom)
+        internArr.map(intern => {
+            employeeArr.push(intern)
+        })
+        //goes to function to create HTML
         generateHTML();
 
     }
 }
-
+// creates HTML
 const generateHTML = () => {
     fs.writeFile('./dist/index.html', writeHTML(), (err) => {
         if (err) throw err;
-        console.log('The file has been created!');
+        console.log('The file has been created! You can view the file in the dist folder.');
       }); 
 }
-
+// adds the code for the HTML
 const writeHTML = () => {
     console.log(`HTML being written`);
-    console.log(employeeArr)
-    return `
-    <!DOCTYPE html>
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -94,7 +109,7 @@ const writeHTML = () => {
 </head>
 <body>
     <nav class="navbar sticky-top navbar-light justify-content-center" style="background-color: #e3f2fd;">
-        <h1 class="navbar-text">Our Team</h1>
+        <h1 class="navbar-text text-body">Our Team</h1>
     </nav>
     <div class="container d-flex flex-wrap p-4">
         ${writeCards()}
@@ -108,15 +123,14 @@ const writeHTML = () => {
 
 }
 
-
+// runs through everything in the array in order to create cards to append to the HTML file
 const writeCards = () =>{
-    console.log(`made it into WriteCards`)
     let html = ``;
-    //If you want you can write seperate functions for whether it is a Manager, Intern, etc...or you can do `if (employee instanceof Intern){blah blah}`
     employeeArr.map(employee => {
         const { name, role, id, extraInfo, email } = employee
         html +=
-         `<div class="card m-4 shadow-lg" style="width: 18rem;">
+         `
+        <div class="card m-4 shadow-lg" style="width: 18rem;">
             <div class="card-header bg-success">
                 ${name}
                 ${role}
@@ -128,11 +142,7 @@ const writeCards = () =>{
             </div>
         </div>`
     });    
-    console.log(`I am about to return`)
     return html;
 }
-
-
+// run Index
 managerInfo();
-
-// module.exports = [ employeeArr ]
