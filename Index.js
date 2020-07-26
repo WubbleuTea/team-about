@@ -1,4 +1,4 @@
-const employeeArr = [];
+let employeeArr = [];
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
@@ -16,12 +16,10 @@ const managerInfo = () => {
                 role: manager.getRole(),
                 name: manager.getName(),
                 id: manager.getId(),
-                email: manager.getEmail(),
-                extraInfo: manager.getOfficeNumber()
+                extraInfo: manager.getOfficeNumber(),
+                email: manager.getEmail()
             };
-            console.table(managerObj)
             employeeArr.push(managerObj)
-            console.log(employeeArr)
             generateOrNot(anotherMember)
         })
 }
@@ -36,11 +34,10 @@ const engineerInfo = () => {
                 role: engineer.getRole(),
                 name: engineer.getName(),
                 id: engineer.getId(),
-                email: engineer.getEmail(),
-                extraInfo: engineer.getOfficeNumber(),
+                extraInfo: engineer.getGithub(),
+                email: engineer.getEmail()
             }
             employeeArr.push(engineerObj)
-            console.log(employeeArr)
             generateOrNot(anotherMember)
         })
 }
@@ -52,14 +49,13 @@ const internInfo = () => {
             const { name, id, email, github, anotherMember } = answers
             const intern = new Intern(name, id, email, github)
             const internObj = {
-                role: intern.getRole(),
                 name: intern.getName(),
+                role: intern.getRole(),
                 id: intern.getId(),
-                email: intern.getEmail(),
-                extraInfo: intern.getOfficeNumber(),
+                extraInfo: intern.getSchool(),
+                email: intern.getEmail()
             }
             employeeArr.push(internObj)
-            console.log(employeeArr)
             generateOrNot(anotherMember)
         })
 }
@@ -70,7 +66,7 @@ const generateOrNot = (anotherMember) => {
     } else if (anotherMember === 'Intern') {
         internInfo();
     } else {
-        console.table(employeeArr)
+        console.log(employeeArr)
         generateHTML();
 
     }
@@ -78,4 +74,4 @@ const generateOrNot = (anotherMember) => {
 
 managerInfo();
 
-module.exports = { employeeArr }
+module.exports = [ employeeArr ]
